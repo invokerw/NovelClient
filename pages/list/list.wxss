@@ -1,0 +1,25 @@
+.header{
+    align-items: center;
+    padding-left: 35rpx;
+    display:flex;
+}
+.horder{
+    padding-right: 30rpx;
+    float:right;
+}
+
+.htitle{
+    width: 75%; 
+}
+.item{
+    border-radius: 5rpx;
+    height: 100rpx;
+    color: #fef4e9;
+    line-height: 100rpx;
+    text-align: center;
+    background-image: url("https://fsnsaber.cn/Main/listchou.jpg");
+    background-size: cover;
+    margin: 10rpx;
+    font-size: 40rpx;
+    font-weight: bold;
+}

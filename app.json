@@ -1,0 +1,39 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/list/list",
+    "pages/content/content",
+    "pages/logs/logs",
+    "pages/about/about",
+    "pages/search/search"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "小说阅读器",
+    "navigationBarTextStyle":"black"
+  },
+    "tabBar":{
+        "color": "#dddddd",
+        "selectedColor": "#4a4a4a",
+        "backgroundColor": "#ffffff",
+        "borderStyle":"white",
+        "list":[{
+                "pagePath":"pages/index/index",
+                "iconPath":"pages/assets/img/tab1b.png",
+                "selectedIconPath":"pages/assets/img/tab1a.png",
+                "text":"首页"
+            },{
+                "pagePath":"pages/search/search",
+                "iconPath":"pages/assets/img/tab3a.png",
+                "selectedIconPath":"pages/assets/img/tab3b.png",
+                "text":"搜索"
+            },{
+                "pagePath":"pages/about/about",
+                "iconPath":"pages/assets/img/tab2a.png",
+                "selectedIconPath":"pages/assets/img/tab2b.png",
+                "text":"关于"
+            }]
+    }
+
+}

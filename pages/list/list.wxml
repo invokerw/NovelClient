@@ -1,0 +1,10 @@
+<view class="weui-cells page__category-content">
+    <view class="header" style="flex-direction:row;">
+        <view  class="htitle">章节目录:</view>
+        <view class="horder" bindtap="invertedOrder">倒序↑↓ </view>
+    </view>
+    
+    <block wx:for="{{datas.list}}" wx:for-item="data" wx:key="{{index}}">
+        <view class="weui-cell" id="{{index}}" bindtap="clickShowContent">{{data.chname}}</view>
+    </block>
+</view>

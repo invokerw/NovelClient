@@ -1,0 +1,26 @@
+<view class="page__category-content">
+    <view>搜索小说：</view>
+    <view class="ceflex-wrp weui-cell" style="flex-direction:row;height:100rpx;">
+    <input class="input-flex-item" placeholder="请输入要搜索的小说名" focus bindinput="inputString"/>
+    
+    <button class=" weui-btn_mini weui-btn_primary btn-flex-item" type="primary" size="default" loading="{{loading}}" plain="false" bindtap="searchNote">搜索</button>
+    </view>
+    <view class="weui-cell"></view>
+    <block wx:if="{{datas.code == 1}}">
+    <view class=" weui-cells ">
+    <block wx:for="{{datas.list}}" wx:for-item="data" wx:key="{{index}}">
+        <view id="{{index}}" bindtap="clickShowList" class="weui-cell ceflex-wrp" style="flex-direction:row;">
+            <image class="flex-img" src="{{imgsurl+imgs[data.index-1]}}" ></image>
+            <view class="flex-item" >
+                <view id="{{index}}" style="font-size:40rpx;" >{{data.notename}}</view>
+                <view id="{{index}}"  >{{data.author}}</view>
+                <view id="{{index}}"  >{{data.newchp}}</view>
+                {{data.status}}
+            </view>
+
+  
+        </view>
+    </block>
+    </view>
+    </block>
+</view>

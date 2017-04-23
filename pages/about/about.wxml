@@ -1,0 +1,9 @@
+<view class=" root ">
+    <view class="title">
+        <p>关于本程序:</p>   
+    </view>
+    <p>这是一个十分难看的小说阅读器.</p>
+    <view>你很怠惰呢</view>
+    <image src="../assets/img/death.jpg"> </image>
+   <image src="https://fsnsaber.cn/Main/dog.jpg"></image>"
+</view>

@@ -1,0 +1,32 @@
+.root{
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  padding-top: 30rpx;
+  overflow-x: hidden;
+  }
+
+.page{
+    background-color: #ffcc99;
+}
+.flex-wrp{
+  margin-top: 2rpx;
+  display:flex;
+  padding: 10rpx;
+}
+.flex-img{
+  width: 20%;
+  height: 200rpx;
+}
+.flex-item{
+  width: 75%;
+  height: 200rpx;
+  font-size: 30rpx;
+  padding-left: 15rpx;
+}
+.flex-item-V{
+  margin: 0 auto;
+  width: 300rpx;
+  height: 200rpx;
+}
+
+@import 'weui.wxss';

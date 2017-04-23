@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view class="weui-cells page__category-content">
+<block wx:for="{{datas.list}}" wx:for-item="data" wx:key="{{data.index}}"> 
+  <!--单个Item-->
+  
+  <view id="{{index}}" bindtap="clickShowList" class="weui-cell ceflex-wrp" style="flex-direction:row;">
+    <image class="flex-img" src="{{imgsurl+imgs[data.index-1]}}" ></image>
+    <view class="flex-item" >
+        <view id="{{index}}" style="font-size:40rpx;" >{{data.novelname}}</view>
+        <view id="{{index}}"  >{{data.author}}</view>
+        <view id="{{index}}"  >{{data.newchp}}</view>
+        {{data.status}}
+    </view>
+
+  
+  </view>
+</block>
+</view>
+

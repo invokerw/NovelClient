@@ -1,0 +1,26 @@
+/* pages/content/content.wxss */
+
+
+.content{
+    background-size: cover;
+    font-size: 40rpx;
+    font-weight: bold;
+    height:100%;
+}
+
+.content_title{
+    height: 50rpx;
+    text-align:center;
+}
+
+.content_preandnext{
+    display: inline-block;
+    height: 50rpx;
+    width: 100%;
+}
+.content_prechp{
+    float: left;
+}
+.content_nextchp{
+    float: right;
+}

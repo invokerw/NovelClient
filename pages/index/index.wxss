@@ -1,0 +1,36 @@
+.container{
+  display: list-item;
+}
+
+.book-item-root{
+  width: 100%;
+  height: 300;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  border: solid 1rpx #E5E5E5;
+  border-radius: 10rpx;
+  background-image: url("https://fsnsaber.cn/Main/listchou.jpg");
+  background-size: cover;
+}
+.book-title{
+  margin-top: 60rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.book-content{
+  margin-top: 20rpx;
+  text-indent: 2em;
+  color: #ABABAB;
+  font-size: 18rpx;
+  margin-bottom: 30rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient: vertical;
+}
+
+
+
