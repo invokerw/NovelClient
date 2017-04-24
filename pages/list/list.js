@@ -5,18 +5,21 @@ Page({
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
-    console.log("list==== onLoad,URL=",options.url);
-     var newRegExp = new RegExp("-", 'gm'); 
+    console.log("list==== onLoad,url=",options.url);
+    var newRegExp = new RegExp("-", 'gm'); 
     var v1 = options.url.replace(newRegExp,"/")
     var that = this;
     wx.request({
-        url:"https://fsnsaber.cn/GetNovelInfoJson?go="+v1,
+        url:"https://fsnsaber.cn/GetChpListJson",
+        data: {
+            url:v1
+        },
         success:function(res){
           console.log("==== res=",res);
            that.setData({datas:res.data});
            console.log("res.data=",res.data);
-           var chp = that.data.datas;
-           console.log("chp=",chp);
+           //var chp = that.data.datas;
+           //console.log("chp=",chp);
         },
         fail: function(err){  
         console.log("list https请求失败了:",err);  
@@ -39,9 +42,10 @@ Page({
     // 页面关闭
   },
   clickShowContent:function(event){
-    console.log("====="+event.target.id);
+    console.log("clickShowContent====="+event.target.id);
     var dat = this.data.datas;
-    var url = dat.list[event.target.id].churl.substring(19);
+    var url = dat.ret[event.target.id].churl.substring(19);
+    console.log("url ="+url);
     var newRegExp = new RegExp("/", 'gm'); 
     var v1 = url.replace(newRegExp,"-");
     var v2 = v1.replace(".","+");
@@ -49,16 +53,17 @@ Page({
      wx.navigateTo({url:"../content/content?data="+v2});
   },
   invertedOrder:function(){
-    if(this.data.datas.list.length <= 1)
+    //console.log("this.data.datas.ret.length = "+this.data.datas.ret.length);
+    if(this.data.datas.ret.length <= 1)
         return ;
-    var listOld = this.data.datas.list;
+    var listOld = this.data.datas.ret;
     var data = this.data.datas;
     var listNew = [];
     var i = 0;
     for(i = listOld.length - 1;i >= 0;i--){
         listNew.push(listOld[i]);
     }
-    data.list = listNew;
+    data.ret = listNew;
     this.setData({datas:data});
   }
 })

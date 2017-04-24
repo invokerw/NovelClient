@@ -2,8 +2,8 @@ Page({
   data:{
     // text:"这是一个页面"
     datas:"",
-    imgs:"",
-    imgsurl:"http://www.huanyue123.com/files/article/image/"
+    //imgs:"",
+    //imgsurl:"http://www.huanyue123.com/files/article/image/"
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -13,10 +13,11 @@ Page({
         success:function(res){
           console.log("==== res=",res);
            that.setData({datas:res.data});
+           /*
            var arr = new Array();
-           for(var i=0;i<res.data.list.length;i++)
+           for(var i=0;i<res.data.ret.length;i++)
            {
-                var str = res.data.list[i].url.substring(22);
+                var str = res.data.ret[i].url.substring(22);
                 //console.log(str);
                 var var1 = str.substring(0,str.indexOf("/")); 
                 var var2 = str.substring(str.indexOf("/")+1,str.length-1);
@@ -26,6 +27,7 @@ Page({
            }
            that.setData({imgs:arr});
            console.log(arr);
+           */
         },
         fail: function(err){  
         console.log("index https请求失败了:",err);  
@@ -48,11 +50,12 @@ Page({
   clickShowList: function(event){
     //console.log(event);
     var dat = this.data.datas; 
-    var url = dat.list[event.target.id].url.substring(16)
-    var newRegExp = new RegExp("/", 'gm'); 
-    var v1 = url.replace(newRegExp,"-")
-    console.log(v1)
-    wx.navigateTo({url:"../list/list?url="+v1});
+    //var url = dat.ret[event.target.id].url.substring(16)
+    //var newRegExp = new RegExp("/", 'gm'); 
+    //var v1 = url.replace(newRegExp,"-")
+    var id = dat.ret[event.target.id].id
+    console.log(id)
+    wx.navigateTo({url:"../novelinfo/novelinfo?id="+id});
   },
 
 })

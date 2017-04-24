@@ -5,7 +5,8 @@
     "pages/content/content",
     "pages/logs/logs",
     "pages/about/about",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/novelinfo/novelinfo"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -4,7 +4,7 @@
         <view class="horder" bindtap="invertedOrder">倒序↑↓ </view>
     </view>
     
-    <block wx:for="{{datas.list}}" wx:for-item="data" wx:key="{{index}}">
+    <block wx:for="{{datas.ret}}" wx:for-item="data" wx:key="{{index}}">
         <view class="weui-cell" id="{{index}}" bindtap="clickShowContent">{{data.chname}}</view>
     </block>
 </view>

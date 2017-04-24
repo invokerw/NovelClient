@@ -1,8 +1,8 @@
 <!--index.wxml-->
-<view class="weui-cells page__category-content">
-<block wx:for="{{datas.ret}}" wx:for-item="data" wx:key="{{data.index}}"> 
+<view class="page__category-content">
+<!--<block wx:for="{{datas.ret}}" wx:for-item="data" wx:key="{{data.index}}"> -->
   <!--单个Item-->
-  
+ <!--  
   <view id="{{index}}" bindtap="clickShowList" class="weui-cell ceflex-wrp" style="flex-direction:row;">
     <image class="flex-img" src="{{data.imagesaddr}}" ></image>
     <view class="flex-item" >
@@ -15,5 +15,15 @@
   
   </view>
 </block>
+-->
+<view bindtap="clickShowList" class="ceflex-wrp">
+  {{datas.ret.novelname}}
+  {{datas.ret.author}}
+  {{datas.ret.desc}}
+  {{datas.ret.newchp}}
+  {{datas.ret.noveltype}}
+  {{datas.ret.status}}
+</view>
+
 </view>
 

@@ -16,7 +16,10 @@ Page({
     console.log("v2 = "+v2)
     var that = this;
     wx.request({
-        url:"https://fsnsaber.cn/GetBookContentJson?go="+v2,
+        url:"https://fsnsaber.cn/GetNovelContentJson?",
+        data:{
+          go:v2
+        },
         success:function(res){
           console.log("==== res=",res);
             that.setData({content:res.data.content});
@@ -61,7 +64,10 @@ Page({
     }
     console.log("content==== v1 =",v1);
     wx.request({
-        url:"https://fsnsaber.cn/GetBookContentJson?go="+v1,
+        url:"https://fsnsaber.cn/GetNovelContentJson",
+        data:{
+          go:v1
+        },
         success:function(res){
           console.log("==== res=",res);
             that.setData({content:res.data.content});
@@ -81,7 +87,10 @@ Page({
     }
     console.log("content==== v1 =",v1);
     wx.request({
-        url:"https://fsnsaber.cn/GetBookContentJson?go="+v1,
+        url:"https://fsnsaber.cn/GetNovelContentJson",
+        data:{
+          go:v1
+        },
         success:function(res){
           console.log("==== res=",res);
             that.setData({content:res.data.content});
