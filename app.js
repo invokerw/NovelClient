@@ -5,9 +5,24 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+
+     //检查登录是否过期
+     // wx.checkSession({
+     //     success: function(e){   //登录态未过期
+     //         console.log("login未过期");
+     //     },
+     //     fail: function(){   //登录态过期了
+     //         console.log("login过期了");
+
+     //     }
+     // });
     wx.login({
       success: function(res) {
         if (res.code) {
+           wx.setStorage({
+              key: "code",
+              data: res.code
+           });
            wx.getUserInfo({
             success: function (res2) {
               console.log('userInfo:' + res2.userInfo)
@@ -20,8 +35,16 @@ App({
                   },
                   success:function(res){
                       //redirectTo
-                      console.log('ok');      
+                      console.log('user login res.data.ret:',res.data.ret);
+                      wx.setStorage({
+                        key: "loginsession",
+                        data: res.data.ret
+                      });       
+                  },
+                  fail:function(res){
+                    console.log('login err:',err);
                   }
+
                 })
             }
 
@@ -32,7 +55,7 @@ App({
       }})
   },
   getUserInfo:function(cb){
-    var that = this
+    /*var that = this
     if(this.globalData.userInfo){
       typeof cb == "function" && cb(this.globalData.userInfo)
     }else{
@@ -48,7 +71,7 @@ App({
           })
         }
       })
-    }
+    }*/
   },
   globalData:{
     userInfo:null,
