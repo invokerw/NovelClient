@@ -6,7 +6,8 @@
     "pages/logs/logs",
     "pages/about/about",
     "pages/search/search",
-    "pages/novelinfo/novelinfo"
+    "pages/novelinfo/novelinfo",
+    "pages/bookshelf/bookshelf"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -24,6 +25,11 @@
                 "iconPath":"pages/assets/img/tab1b.png",
                 "selectedIconPath":"pages/assets/img/tab1a.png",
                 "text":"首页"
+            },{
+                "pagePath":"pages/bookshelf/bookshelf",
+                "iconPath":"pages/assets/img/tab4b.png",
+                "selectedIconPath":"pages/assets/img/tab4a.png",
+                "text":"书架"
             },{
                 "pagePath":"pages/search/search",
                 "iconPath":"pages/assets/img/tab3a.png",

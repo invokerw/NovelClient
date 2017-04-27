@@ -4,7 +4,7 @@ Page({
     datas:
     {
       code:0,
-      list:null
+      ret:null
     },
     searchStr:"",
     loading: false,

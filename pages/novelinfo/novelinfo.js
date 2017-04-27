@@ -2,6 +2,7 @@ Page({
   data:{
     // text:"这是一个页面"
     datas:"",
+    loginsession:"",
     //imgs:"",
     //imgsurl:"http://www.huanyue123.com/files/article/image/"
   },
@@ -48,5 +49,33 @@ Page({
     console.log(v1)
     wx.navigateTo({url:"../list/list?url="+v1});
   },
-
+  addToBookShelf: function(event){
+    var dat = this.data.datas; 
+    var that = this;
+    wx.getStorage({
+    key: 'loginsession',
+    success: function(res) {
+        console.log("loginsession=",res.data);
+        that.setData({loginsession:res.data});
+        console.log("loginsession=",that.data.loginsession);
+        wx.request({
+        url:"https://fsnsaber.cn/AddAUserNovelInBookShelfJson",
+        data:{
+           session:that.data.loginsession,
+           novelid:dat.ret.id
+        },
+        success:function(res){
+          console.log("add novel to bookshelf ====> res=",res);
+          if(res.code == 1)
+          {
+            console.log("add novel to bookshelf ok,res.code = ",res.code);
+          }
+        },
+        fail: function(err){  
+        console.log("AddAUserNovelInBookShelfJson https请求失败了:",err);  
+       } 
+    });
+    } 
+    })
+  }
 })

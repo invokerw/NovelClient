@@ -44,7 +44,7 @@ Page({
   clickShowContent:function(event){
     console.log("clickShowContent====="+event.target.id);
     var dat = this.data.datas;
-    var url = dat.ret[event.target.id].churl.substring(19);
+    var url = dat.ret[event.target.id].churl;
     console.log("url ="+url);
     var newRegExp = new RegExp("/", 'gm'); 
     var v1 = url.replace(newRegExp,"-");

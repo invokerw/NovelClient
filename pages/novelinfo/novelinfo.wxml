@@ -24,6 +24,8 @@
   {{datas.ret.noveltype}}
   {{datas.ret.status}}
 </view>
+<view>---------------------------------</view>
+<view bindtap="addToBookShelf">加入到书架</view>
 
 </view>
 
