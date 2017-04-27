@@ -4,6 +4,7 @@ Page({
     datas:"",
     content : "",
     scrollTop:0,
+    loginsession:"",
 
 
   },
@@ -15,20 +16,48 @@ Page({
     var v2 = v1.replace("+",".")
     console.log("v2 = "+v2)
     var that = this;
-    wx.request({
-        url:"https://fsnsaber.cn/GetNovelContentJson?",
-        data:{
-          go:v2
-        },
-        success:function(res){
-          console.log("==== res=",res);
-            that.setData({content:res.data.content});
-            that.setData({datas:res.data});
-        },
-        fail:function(err){
-          console.log("content https err = ",err);
-        }
-    });
+    wx.getStorage({
+      key: 'loginsession',
+      success: function(res) {
+        //console.log("loginsession=",res.data);
+        that.setData({loginsession:res.data});
+        console.log("loginsession=",that.data.loginsession);
+        wx.request({
+            url:"https://fsnsaber.cn/GetNovelContentJson?",
+            data:{
+              go:v2,
+              session:that.data.loginsession
+            },
+            success:function(res){
+              console.log("==== res=",res);
+                that.setData({content:res.data.content});
+                that.setData({datas:res.data});
+            },
+            fail:function(err){
+              console.log("content https err = ",err);
+            }
+        });
+      },
+      fail: function(err){  
+        console.log("getStorage fail:",err); 
+        wx.request({
+            url:"https://fsnsaber.cn/GetNovelContentJson?",
+            data:{
+              go:v2,
+              session:that.data.loginsession
+            },
+            success:function(res){
+              console.log("==== res=",res);
+                that.setData({content:res.data.content});
+                that.setData({datas:res.data});
+            },
+            fail:function(err){
+              console.log("content https err = ",err);
+            }
+        });
+      } 
+      
+    })
   },
   onReady:function(){
     // 页面渲染完成
@@ -38,6 +67,7 @@ Page({
     // 页面显示
    // var content = this.data.content;
    // console.log("content==== onReady data =",content);
+   this.onLoad()
   },
   onHide:function(){
     // 页面隐藏
@@ -66,7 +96,8 @@ Page({
     wx.request({
         url:"https://fsnsaber.cn/GetNovelContentJson",
         data:{
-          go:v1
+          go:v1,
+          session:that.data.loginsession
         },
         success:function(res){
           console.log("==== res=",res);
@@ -89,7 +120,8 @@ Page({
     wx.request({
         url:"https://fsnsaber.cn/GetNovelContentJson",
         data:{
-          go:v1
+          go:v1,
+          session:that.data.loginsession
         },
         success:function(res){
           console.log("==== res=",res);

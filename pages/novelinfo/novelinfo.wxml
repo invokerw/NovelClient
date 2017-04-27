@@ -25,7 +25,12 @@
   {{datas.ret.status}}
 </view>
 <view>---------------------------------</view>
+<block wx:if="{{isInbookShelf == 0}}">
 <view bindtap="addToBookShelf">加入到书架</view>
+</block>
+<block wx:if="{{isInbookShelf == 1}}">
+<view bindtap="removeToBookShelf">移出书架</view>
+</block>
 
 </view>
 

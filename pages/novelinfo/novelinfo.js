@@ -2,6 +2,7 @@ Page({
   data:{
     // text:"这是一个页面"
     datas:"",
+    isInbookShelf:0,
     loginsession:"",
     //imgs:"",
     //imgsurl:"http://www.huanyue123.com/files/article/image/"
@@ -24,6 +25,32 @@ Page({
         console.log("index https请求失败了:",err);  
       } 
     });
+    wx.getStorage({
+    key: 'loginsession',
+    success: function(res) {
+        //console.log("loginsession=",res.data);
+        that.setData({loginsession:res.data});
+        console.log("loginsession=",that.data.loginsession);
+        wx.request({
+        url:"https://fsnsaber.cn/GetTheNovelInBookShelfJson",
+        data:{
+           session:that.data.loginsession,
+           novelid:getid
+        },
+        success:function(res){
+          console.log("GetTheNovelInBookShelfJson ====> res=",res);
+          if(res.data.code == 1)
+          {
+            console.log("bookshelf have this novel");
+            that.setData({isInbookShelf:1});
+          }
+        },
+        fail: function(err){  
+        console.log("GetTheNovelInBookShelfJson https请求失败了:",err);  
+       } 
+    });
+    }
+    }) 
  
   },
   onReady:function(){
@@ -50,14 +77,14 @@ Page({
     wx.navigateTo({url:"../list/list?url="+v1});
   },
   addToBookShelf: function(event){
-    var dat = this.data.datas; 
     var that = this;
-    wx.getStorage({
-    key: 'loginsession',
-    success: function(res) {
-        console.log("loginsession=",res.data);
-        that.setData({loginsession:res.data});
-        console.log("loginsession=",that.data.loginsession);
+    var dat = this.data.datas; 
+    //wx.getStorage({
+    //key: 'loginsession',
+    //success: function(res) {
+        //console.log("loginsession=",res.data);
+        //that.setData({loginsession:res.data});
+        console.log("addToBookShelf loginsession=",that.data.loginsession);
         wx.request({
         url:"https://fsnsaber.cn/AddAUserNovelInBookShelfJson",
         data:{
@@ -66,16 +93,40 @@ Page({
         },
         success:function(res){
           console.log("add novel to bookshelf ====> res=",res);
-          if(res.code == 1)
+          if(res.data.code == 1)
           {
-            console.log("add novel to bookshelf ok,res.code = ",res.code);
+            console.log("add novel to bookshelf ok,res.data.code = ",res.data.code);
+            that.setData({isInbookShelf:1});
           }
         },
         fail: function(err){  
         console.log("AddAUserNovelInBookShelfJson https请求失败了:",err);  
        } 
     });
-    } 
-    })
+    //} 
+    //})
+  },
+  removeToBookShelf: function(event){
+    var that = this;
+    var dat = this.data.datas; 
+    console.log("removeToBookShelf loginsession=",that.data.loginsession);
+    wx.request({
+      url:"https://fsnsaber.cn/DeleteAUserNovelInBookShelfJson",
+      data:{
+          session:that.data.loginsession,
+          novelid:dat.ret.id
+      },
+      success:function(res){
+        console.log("remove novel from bookshelf ====> res=",res);
+        if(res.data.code == 1)
+        {
+          console.log("remove novel from ok,res.data.code = ",res.data.code);
+          that.setData({isInbookShelf:0});
+        }
+      },
+      fail: function(err){  
+      console.log("DeleteAUserNovelInBookShelfJson https请求失败了:",err);  
+      } 
+    });
   }
 })
