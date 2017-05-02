@@ -9,3 +9,7 @@
     background-size: cover;
 }
 
+.flex-ablout-img{
+  width: 50%;
+  height: 200rpx;
+}

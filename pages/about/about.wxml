@@ -2,6 +2,32 @@
     <!--<view class="title">
         <p>关于本程序:</p>   
     </view>-->
+    <view id="{{index}}"  class="ceflex-wrp" style="flex-direction:row;">
+        <image class="flex-ablout-img" bindtap="clickShowRenqi" src="../assets/img/renqi.png" ></image>
+        <image class="flex-ablout-img" bindtap="clickShowDianji" src="../assets/img/dianji.png" ></image>
+    </view>
+    <view id="{{index}}" class="ceflex-wrp" style="flex-direction:row;">
+        <image class="flex-ablout-img" bindtap="clickShowShoucang" src="../assets/img/shoucang.png" ></image>
+        <image class="flex-ablout-img" bindtap="clickShowTuijian" src="../assets/img/tuijian.png" ></image>
+    </view>
 
-   <image style="width:580rpx;height: 1125rpx;" src="https://www.fsnsaber.cn/Main/%E7%BB%93%E8%A1%A3.jpg"></image>
+    <view class="weui-cell"></view>
+    <view id="{{index}}"  class="ceflex-wrp" style="flex-direction:row;">
+        <image class="flex-ablout-img" bindtap="clickShowXianxia" src="../assets/img/noveltype/xianxia.png" ></image>
+        <image class="flex-ablout-img" bindtap="clickShowXuanhuan" src="../assets/img/noveltype/xuanhuan.png" ></image>
+    </view>
+    <view id="{{index}}" class="ceflex-wrp" style="flex-direction:row;">
+        <image class="flex-ablout-img" bindtap="clickShowDushi" src="../assets/img/noveltype/dushi.png" ></image>
+        <image class="flex-ablout-img" bindtap="clickShowLishi" src="../assets/img/noveltype/lishi.png" ></image>
+    </view>
+    <view id="{{index}}"  class="ceflex-wrp" style="flex-direction:row;">
+        <image class="flex-ablout-img" bindtap="clickShowYanqing" src="../assets/img/noveltype/yanqing.png" ></image>
+        <image class="flex-ablout-img" bindtap="clickShowLingyi" src="../assets/img/noveltype/lingyi.png" ></image>
+    </view>
+    <view id="{{index}}" class="ceflex-wrp" style="flex-direction:row;">
+        <image class="flex-ablout-img" bindtap="clickShowWangyou" src="../assets/img/noveltype/wangyou.png" ></image>
+        <image class="flex-ablout-img" bindtap="clickShowKehuan" src="../assets/img/noveltype/kehuan.png" ></image>
+    </view>
+
+
 </view>

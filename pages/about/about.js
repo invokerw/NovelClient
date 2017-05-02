@@ -16,5 +16,41 @@ Page({
   },
   onUnload:function(){
     // 页面关闭
+  },
+  clickShowRenqi:function(){
+      wx.navigateTo({url:"../topnovels/topnovels?toptype=renqi"});
+  },
+  clickShowDianji:function(){
+    wx.navigateTo({url:"../topnovels/topnovels?toptype=dianji"});
+  },
+  clickShowShoucang:function(){
+    wx.navigateTo({url:"../topnovels/topnovels?toptype=shoucang"});
+  },
+  clickShowTuijian:function(){
+    wx.navigateTo({url:"../topnovels/topnovels?toptype=tuijian"});
+  },
+  clickShowXianxia:function(){
+      wx.navigateTo({url:"../topnovels/topnovels?toptype=xianxia"});
+  },
+  clickShowXuanhuan:function(){
+    wx.navigateTo({url:"../topnovels/topnovels?toptype=xuanhuan"});
+  },
+  clickShowDushi:function(){
+    wx.navigateTo({url:"../topnovels/topnovels?toptype=dushi"});
+  },
+  clickShowLishi:function(){
+    wx.navigateTo({url:"../topnovels/topnovels?toptype=lishi"});
+  },
+  clickShowWangyou:function(){
+      wx.navigateTo({url:"../topnovels/topnovels?toptype=wangyou"});
+  },
+  clickShowKehuan:function(){
+    wx.navigateTo({url:"../topnovels/topnovels?toptype=kehuan"});
+  },
+  clickShowLingyi:function(){
+    wx.navigateTo({url:"../topnovels/topnovels?toptype=lingyi"});
+  },
+  clickShowYanqing:function(){
+    wx.navigateTo({url:"../topnovels/topnovels?toptype=yanqing"});
   }
 })

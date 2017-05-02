@@ -7,7 +7,8 @@
     "pages/about/about",
     "pages/search/search",
     "pages/novelinfo/novelinfo",
-    "pages/bookshelf/bookshelf"
+    "pages/bookshelf/bookshelf",
+    "pages/topnovels/topnovels"
   ],
   "window":{
     "backgroundTextStyle":"light",
