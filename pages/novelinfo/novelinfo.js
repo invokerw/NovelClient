@@ -4,6 +4,13 @@ Page({
     datas:"",
     isInbookShelf:0,
     loginsession:"",
+    comment:
+    {
+      code:0,
+      ret:null
+    },
+    commentStr:"",
+    loadingComment: false,
     loadingadd: false,
     loadingremove: false,
   },
@@ -28,6 +35,7 @@ Page({
         console.log("index https请求失败了:",err);  
       } 
     });
+
     wx.getStorage({
     key: 'loginsession',
     success: function(res) {
@@ -50,10 +58,29 @@ Page({
         },
         fail: function(err){  
         console.log("GetTheNovelInBookShelfJson https请求失败了:",err);  
-       } 
-    });
+       }   
+       });
+        //评论请求
+      wx.request({
+            url:"https://fsnsaber.cn/GetANovelCommentsJson",
+            data: {
+                session:that.data.loginsession,
+                novelid:getid
+            },
+            success:function(res){
+              console.log("GetANovelCommentsJson ==== res=",res);
+              that.setData({comment:res.data});
+            },
+            fail: function(err){  
+            console.log("GetANovelCommentsJson https请求失败了:",err);  
+            } 
+         });
+
+
+   
     }
-    }) 
+    });
+
  
   },
   onReady:function(){
@@ -135,5 +162,49 @@ Page({
       console.log("DeleteAUserNovelInBookShelfJson https请求失败了:",err);  
       } 
     });
-  }
+  },
+  inputString:function(e){
+      this.setData({commentStr:e.detail.value})
+  },
+  commentNovel:function(e){
+    if(this.data.commentStr.length == 0)
+    {
+      console.log("输入的搜索内容为空");
+      return 
+    }
+     this.setData({loading: !this.data.loadingComment})
+     var that = this;
+     wx.request({
+        url:"https://fsnsaber.cn/AddANovelCommentJson",
+        data:{
+          session:that.data.loginsession,
+          novelid:that.data.datas.ret.id,
+          content:this.data.commentStr
+          },
+        success:function(res){
+           console.log("commentNovel request ==== res=",res);
+           that.setData({loading: !that.data.loadingComment})
+               var that = this;
+        wx.request({
+        url:"https://fsnsaber.cn/GetANovelCommentsJson",
+        data: {
+            session:that.data.loginsession,
+            novelid:that.data.datas.ret.id
+        },
+        success:function(res){
+          console.log("GetANovelCommentsJson ==== res=",res);
+           that.setData({comment:res.data});
+        },
+        fail: function(err){  
+        console.log("GetANovelCommentsJson https请求失败了:",err);  
+        } 
+         });
+        },
+        fail: function(err){  
+        console.log("commentNovel https请求失败了:",err);  
+      } 
+    });
+  },
+
+
 })

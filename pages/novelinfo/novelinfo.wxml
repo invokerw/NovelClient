@@ -34,7 +34,35 @@
   
   <text>{{datas.ret.desc}}</text>
 </view>
+<view class="weui-cell"></view>
+<view class="title novel-desc-title">
+  热门评论：
+</view>
+<block wx:if="{{comment.code == 1}}">
+    <view class=" weui-cells ">
+    <block wx:for="{{comment.ret}}" wx:for-item="data" wx:key="{{index}}">
+        <view id="{{index}}" bindtap="clickShowList" class="weui-cell ceflex-wrp" style="flex-direction:row;">
+            <view class="flex-item" >
+                <view id="{{index}}" style="font-size:40rpx;" >{{data.userid}}:</view>
+                <view id="{{index}}"  >{{data.content}}</view>
 
+            </view>
 
+  
+        </view>
+    </block>
+    </view>
+</block>
+<block wx:if="{{comment.code == 0}}">
+<view  class="weui-article">
+  
+  <text>该小说暂无评论.</text>
+</view>  
+</block>
+<view class="ceflex-wrp weui-cell" style="flex-direction:row;height:100rpx;">
+    <input class="input-flex-item" placeholder="我也要评论..." focus bindinput="inputString"/>
+    
+    <button class=" weui-btn_mini weui-btn_primary btn-flex-item" type="primary" size="default" loading="{{loadingComment}}" plain="false" bindtap="commentNovel">评论</button>
+    </view>
 </view>
 

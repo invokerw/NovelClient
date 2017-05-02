@@ -29,3 +29,8 @@
   padding-left: 50rpx;
   padding-right: 20rpx;
 }
+.input-flex-item{
+  width: 80%;
+  height: 80rpx;
+  font-size: 40rpx;
+}
