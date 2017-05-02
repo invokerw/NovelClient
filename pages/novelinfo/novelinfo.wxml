@@ -1,36 +1,40 @@
 <!--index.wxml-->
 <view class="page__category-content">
-<!--<block wx:for="{{datas.ret}}" wx:for-item="data" wx:key="{{data.index}}"> -->
-  <!--单个Item-->
- <!--  
-  <view id="{{index}}" bindtap="clickShowList" class="weui-cell ceflex-wrp" style="flex-direction:row;">
-    <image class="flex-img" src="{{data.imagesaddr}}" ></image>
-    <view class="flex-item" >
-        <view id="{{index}}" style="font-size:40rpx;" >{{data.novelname}}</view>
-        <view id="{{index}}"  >{{data.author}}</view>
-        <view id="{{index}}"  >{{data.newchp}}</view>
-        {{data.status}}
-    </view>
+  <view class="book-item-root weui-cell ceflex-wrp" style="flex-direction:row;">
 
-  
-  </view>
-</block>
--->
-<view bindtap="clickShowList" class="ceflex-wrp">
-  {{datas.ret.novelname}}
-  {{datas.ret.author}}
-  {{datas.ret.desc}}
-  {{datas.ret.newchp}}
-  {{datas.ret.noveltype}}
-  {{datas.ret.status}}
+    <view class="flex-info-item" >
+        <view style="font-size:50rpx;">{{datas.ret.novelname}}</view>
+        <view >{{datas.ret.author}}</view>
+        <view >{{datas.ret.noveltype}}</view>
+        <view >{{datas.ret.status}}</view>
+    </view>
+    <image class="flex-info-img" src="{{datas.ret.imagesaddr}}" ></image>
 </view>
-<view>---------------------------------</view>
-<block wx:if="{{isInbookShelf == 0}}">
-<view bindtap="addToBookShelf">加入到书架</view>
-</block>
-<block wx:if="{{isInbookShelf == 1}}">
-<view bindtap="removeToBookShelf">移出书架</view>
-</block>
+<view class="weui-cell ceflex-wrp" style="flex-direction:row;">
+    <view class="flex-info-button">
+    <block wx:if="{{isInbookShelf == 0}}">
+        <button  type="primary" size="{{primarySize}}" loading="{{loadingadd}}" plain="{{plain}}"
+            disabled="{{disabled}}" bindtap="addToBookShelf"> 加入到书架 </button>
+    </block>
+    <block wx:if="{{isInbookShelf == 1}}">
+        <button  type="warn" size="{{primarySize}}" loading="{{loadingremove}}" plain="{{plain}}"
+        disabled="{{disabled}}" bindtap="removeToBookShelf"> 移出书架 </button>
+    </block>
+    </view>
+    <view class="flex-info-button">
+     <button  type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
+            disabled="{{disabled}}" bindtap="clickShowList">开始阅读 </button>
+    </view>
+</view>
+<view class="weui-cell"></view>
+<view class="title novel-desc-title">
+  小说介绍：
+</view>
+<view  class="weui-article">
+  
+  <text>{{datas.ret.desc}}</text>
+</view>
+
 
 </view>
 

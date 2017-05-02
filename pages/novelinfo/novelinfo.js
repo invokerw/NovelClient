@@ -4,8 +4,8 @@ Page({
     datas:"",
     isInbookShelf:0,
     loginsession:"",
-    //imgs:"",
-    //imgsurl:"http://www.huanyue123.com/files/article/image/"
+    loadingadd: false,
+    loadingremove: false,
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -20,6 +20,9 @@ Page({
         success:function(res){
           console.log("==== res=",res);
            that.setData({datas:res.data});
+           wx.setNavigationBarTitle({
+            title: that.data.datas.ret.novelname
+          })
         },
         fail: function(err){  
         console.log("index https请求失败了:",err);  
@@ -78,6 +81,7 @@ Page({
   },
   addToBookShelf: function(event){
     var that = this;
+    that.setData({loadingadd: !that.data.loadingadd})
     var dat = this.data.datas; 
     //wx.getStorage({
     //key: 'loginsession',
@@ -97,6 +101,7 @@ Page({
           {
             console.log("add novel to bookshelf ok,res.data.code = ",res.data.code);
             that.setData({isInbookShelf:1});
+            that.setData({loadingadd: !that.data.loadingadd})
           }
         },
         fail: function(err){  
@@ -109,6 +114,7 @@ Page({
   removeToBookShelf: function(event){
     var that = this;
     var dat = this.data.datas; 
+    that.setData({loadingremove: !that.data.loadingremove})
     console.log("removeToBookShelf loginsession=",that.data.loginsession);
     wx.request({
       url:"https://fsnsaber.cn/DeleteAUserNovelInBookShelfJson",
@@ -122,6 +128,7 @@ Page({
         {
           console.log("remove novel from ok,res.data.code = ",res.data.code);
           that.setData({isInbookShelf:0});
+           that.setData({loadingremove: !that.data.loadingremove})
         }
       },
       fail: function(err){  

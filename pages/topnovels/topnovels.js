@@ -80,6 +80,9 @@ Page({
       that.setData({showType:"言情小说"});
       requrl = "https://fsnsaber.cn/GetATypeNovelJson";
     }
+    wx.setNavigationBarTitle({
+            title: that.data.showType
+     })
     wx.request({
         url:requrl,
         data: {

@@ -6,6 +6,9 @@ Page({
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     console.log("list==== onLoad,url=",options.url);
+    wx.setNavigationBarTitle({
+        title: "章节列表"
+    })
     var newRegExp = new RegExp("-", 'gm'); 
     var v1 = options.url.replace(newRegExp,"/")
     var that = this;
@@ -18,6 +21,7 @@ Page({
           console.log("==== res=",res);
            that.setData({datas:res.data});
            console.log("res.data=",res.data);
+
            //var chp = that.data.datas;
            //console.log("chp=",chp);
         },

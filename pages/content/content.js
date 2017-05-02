@@ -32,6 +32,9 @@ Page({
               console.log("==== res=",res);
                 that.setData({content:res.data.content});
                 that.setData({datas:res.data});
+                wx.setNavigationBarTitle({
+                   title: that.data.datas.chpname
+                })
             },
             fail:function(err){
               console.log("content https err = ",err);

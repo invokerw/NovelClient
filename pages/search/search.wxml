@@ -1,5 +1,4 @@
 <view class="page__category-content">
-    <view>搜索小说：</view>
     <view class="ceflex-wrp weui-cell" style="flex-direction:row;height:100rpx;">
     <input class="input-flex-item" placeholder="请输入要搜索的小说名" focus bindinput="inputString"/>
     
