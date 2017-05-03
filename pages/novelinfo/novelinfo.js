@@ -4,7 +4,7 @@ Page({
     datas:"",
     isInbookShelf:0,
     loginsession:"",
-    comment:
+    comments:
     {
       code:0,
       ret:null
@@ -13,7 +13,11 @@ Page({
     loadingComment: false,
     loadingadd: false,
     loadingremove: false,
-  },
+    loadingdelcomment:false,
+    loadingzan:false,
+    loadingcancelzan:false,
+    zanorcancel:[],
+},
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
@@ -69,7 +73,14 @@ Page({
             },
             success:function(res){
               console.log("GetANovelCommentsJson ==== res=",res);
-              that.setData({comment:res.data});
+              that.setData({comments:res.data});
+              console.log("res.data .length= ",res.data.ret.length);
+              var zan = [];
+              for(var i = 0;i < res.data.ret.length;i++)
+              {
+                  zan[i] = false;
+              }
+              that.setData({zanorcancel:zan});
             },
             fail: function(err){  
             console.log("GetANovelCommentsJson https请求失败了:",err);  
@@ -184,7 +195,7 @@ Page({
         success:function(res){
            console.log("commentNovel request ==== res=",res);
            that.setData({loading: !that.data.loadingComment})
-               var that = this;
+               //var that = this;
         wx.request({
         url:"https://fsnsaber.cn/GetANovelCommentsJson",
         data: {
@@ -193,7 +204,13 @@ Page({
         },
         success:function(res){
           console.log("GetANovelCommentsJson ==== res=",res);
-           that.setData({comment:res.data});
+           that.setData({comments:res.data});
+           var zan = that.data.zanorcancel;
+            //console.log("zan.length",res.data.ret.length);
+            //console.log("zan",zan);
+           zan[res.data.ret.length-1] =false;
+           
+           that.setData({zanorcancel:zan});
         },
         fail: function(err){  
         console.log("GetANovelCommentsJson https请求失败了:",err);  
@@ -205,6 +222,100 @@ Page({
       } 
     });
   },
-
+  zanComment:function(event){
+    var that = this;
+     that.setData({loading: !this.data.loadingzan})
+     var dat = that.data.comments; 
+     var id = dat.ret[event.target.id].comment.commentid;
+      wx.request({
+        url:"https://fsnsaber.cn/UpdateANovelCommentJson",
+        data:{
+          session:that.data.loginsession,
+          commentid:id,
+          type:'add'
+          },
+        success:function(res){
+           console.log("zanComment request ==== res=",res);
+           that.setData({loading: !that.data.loadingzan})
+           var cmt = that.data.comments;
+           //console.log("zan1 = ", cmt.ret[event.target.id].comment.zan);
+           var zannum = parseInt(cmt.ret[event.target.id].comment.zan) + 1;
+           //console.log("zannum = ", zannum);
+           cmt.ret[event.target.id].comment.zan = zannum.toString();
+           //console.log("zan2 = ", cmt.ret[event.target.id].comment.zan);
+           that.setData({comments:  cmt});  
+           var zan = that.data.zanorcancel
+           zan[event.target.id] = true;
+           that.setData({zanorcancel: zan}) ;  
+        },
+        fail: function(err){  
+        console.log("zanComment https请求失败了:",err);  
+      } 
+    });
+  },
+  cacelZanComment:function(event){
+     this.setData({loading: !this.data.loadingcancelzan}) 
+     var dat = this.data.comments; 
+     var that = this;
+     var id = dat.ret[event.target.id].comment.commentid;
+     wx.request({
+        url:"https://fsnsaber.cn/UpdateANovelCommentJson",
+        data:{
+          session:that.data.loginsession,
+          commentid:id,
+          type:'min'
+          },
+        success:function(res){
+           console.log("cacelZanComment request ==== res=",res);
+           that.setData({loading: !that.data.loadingcancelzan});
+           var cmt = that.data.comments;
+           //console.log("zan1 = ", cmt.ret[event.target.id].comment.zan);
+           var zannum = parseInt(cmt.ret[event.target.id].comment.zan) - 1;
+           //console.log("zannum = ", zannum);
+           cmt.ret[event.target.id].comment.zan = zannum.toString();
+           //console.log("zan2 = ", cmt.ret[event.target.id].comment.zan);
+           that.setData({comments:  cmt});  
+           var zan = that.data.zanorcancel;
+           zan[event.target.id] = false;
+           that.setData({zanorcancel: zan}) ;   
+        },
+        fail: function(err){  
+        console.log("cacelZanComment https请求失败了:",err);  
+      } 
+    });
+  },
+  deleteComment:function(event){
+    var that = this;
+    this.setData({loading: !this.data.loadingdelcomment}) 
+    var dat = this.data.comments; 
+    var id = dat.ret[event.target.id].comment.commentid;
+    wx.request({
+        url:"https://fsnsaber.cn/DeleteANovelCommentJson",
+        data:{
+          session:that.data.loginsession,
+          commentid:id,
+          },
+        success:function(res){
+           console.log("deleteComment request ==== res=",res);
+           that.setData({loading: !that.data.loadingdelcomment})
+           var cmt = that.data.comments;
+           cmt.ret.splice(event.target.id, 1);
+ 
+          var zan = that.data.zanorcancel;
+           zan.splice(event.target.id, 1);
+           that.setData({zanorcancel:  zan}); 
+           if(cmt.ret.length == 0)
+           {
+             cmt.code = 0;
+           }
+           that.setData({comments:  cmt});  
+           console.log("comment = ", that.data.comment);
+            console.log("zan = ", that.data.zanorcancel);
+        },
+        fail: function(err){  
+        console.log("deleteComment https请求失败了:",err);  
+      } 
+    });
+  },
 
 })

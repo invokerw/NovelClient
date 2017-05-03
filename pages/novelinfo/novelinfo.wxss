@@ -34,3 +34,13 @@
   height: 80rpx;
   font-size: 40rpx;
 }
+.flex-comment-btn-item{
+  width: 20%;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}
+.flex-comment-content-item{
+  width: 80%;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}

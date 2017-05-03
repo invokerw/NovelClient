@@ -1,9 +1,69 @@
 <!--index.wxml-->
 <view class="weui-cells page__category-content">
-<block wx:for="{{datas.ret}}" wx:for-item="data" wx:key="{{data.index}}"> 
-  <!--单个Item-->
-  
-  <view id="{{index}}" bindtap="clickShowList" class="weui-cell ceflex-wrp" style="flex-direction:row;">
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}" wx:for-item="item" wx:key="{{item.index}}">
+    <swiper-item>
+      <image id="{{index}}" src="{{item.url}}" bindtap="clickImgShowinfo" class="slide-image" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class="title novel-desc-title">
+  人气推荐：
+</view>
+<view  class="weui-cell ceflex-wrp" style="flex-direction:row;">
+    
+    <view id="10"  class="flex-info-item" >
+        <image id="10" class="flex-img-item" bindtap="clickShowInfo" src="{{datas.ret[10].imagesaddr}}" ></image>
+        <view class="text_novelname"><text>{{datas.ret[10].novelname}}</text></view>
+    </view>
+    <view id="11"  class="flex-info-item" >
+        <image id="11" class="flex-img-item" bindtap="clickShowInfo" src="{{datas.ret[11].imagesaddr}}" aspectFit ></image>
+        <view class="text_novelname"><text>{{datas.ret[11].novelname}}</text></view>
+    </view>
+    <view id="12"  class="flex-info-item"  >
+        <image id="12" class="flex-img-item" bindtap="clickShowInfo" src="{{datas.ret[12].imagesaddr}}" ></image>
+        <view class="text_novelname"><text>{{datas.ret[12].novelname}}</text></view>
+    </view>
+
+</view>
+<view  class="weui-cell ceflex-wrp" style="flex-direction:row;">
+    
+    <view id="13" class="flex-info-item" >
+        <image id="13" class="flex-img-item"   bindtap="clickShowInfo"src="{{datas.ret[13].imagesaddr}}" ></image>
+        <view class="text_novelname"><text>{{datas.ret[13].novelname}}</text></view>
+    </view>
+    <view id="14"   class="flex-info-item" >
+        <image id="14"  class="flex-img-item" bindtap="clickShowInfo" src="{{datas.ret[14].imagesaddr}}" aspectFit ></image>
+        <view class="text_novelname"><text>{{datas.ret[14].novelname}}</text></view>
+    </view>
+    <view id="15"   class="flex-info-item"  >
+        <image id="15" class="flex-img-item" bindtap="clickShowInfo" src="{{datas.ret[15].imagesaddr}}" ></image>
+        <view class="text_novelname"><text>{{datas.ret[15].novelname}}</text></view>
+    </view>
+
+</view>
+<view  class="weui-cell ceflex-wrp" style="flex-direction:row;">
+    
+    <view id="16"  class="flex-info-item" >
+        <image id="16" class="flex-img-item" bindtap="clickShowInfo" src="{{datas.ret[16].imagesaddr}}" ></image>
+        <view class="text_novelname"><text>{{datas.ret[16].novelname}}</text></view>
+    </view>
+    <view id="17"  class="flex-info-item" >
+        <image id="17" class="flex-img-item"  bindtap="clickShowInfo" src="{{datas.ret[17].imagesaddr}}" aspectFit ></image>
+        <view class="text_novelname"><text>{{datas.ret[17].novelname}}</text></view>
+    </view>
+    <view id="18"  class="flex-info-item"  >
+        <image id="18" class="flex-img-item" bindtap="clickShowInfo" src="{{datas.ret[18].imagesaddr}}" ></image>
+        <view class="text_novelname" ><text>{{datas.ret[18].novelname}}</text></view>
+    </view>
+
+</view>
+<view class="title novel-desc-title">
+  今日Top10：
+</view>
+<block wx:for="{{topten}}" wx:for-item="data" wx:key="{{data.index}}"> 
+  <view id="{{index}}" bindtap="clickShowInfo" class="weui-cell ceflex-wrp" style="flex-direction:row;">
     <image class="flex-img" src="{{data.imagesaddr}}" ></image>
     <view class="flex-item" >
         <view id="{{index}}" style="font-size:40rpx;" >{{data.novelname}}</view>
@@ -15,5 +75,6 @@
   
   </view>
 </block>
+
 </view>
 

@@ -2,8 +2,14 @@ Page({
   data:{
     // text:"这是一个页面"
     datas:"",
+    topten:"",
     //imgs:"",
     //imgsurl:"http://www.huanyue123.com/files/article/image/"
+    imgUrls:[],
+    indicatorDots: true,
+    autoplay: true,
+    interval: 5000,
+    duration: 1000
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -13,27 +19,33 @@ Page({
         success:function(res){
           console.log("==== res=",res);
            that.setData({datas:res.data});
-           /*
            var arr = new Array();
-           for(var i=0;i<res.data.ret.length;i++)
+           var len = 10;
+           if(res.data.ret.length < len)
            {
-                var str = res.data.ret[i].url.substring(22);
-                //console.log(str);
-                var var1 = str.substring(0,str.indexOf("/")); 
-                var var2 = str.substring(str.indexOf("/")+1,str.length-1);
-                str = str + var2 + "s.jpg" ;
-                //console.log(str);
-                arr.push(str);
+             len = res.data.ret.length ;
            }
-           that.setData({imgs:arr});
+           for(var i=0;i<len;i++)
+           {
+                arr[i] = res.data.ret[i]
+           }
+           that.setData({topten:arr});
            console.log(arr);
-           */
         },
         fail: function(err){  
         console.log("index https请求失败了:",err);  
       } 
     });
- 
+   wx.request({
+        url:"https://fsnsaber.cn/GetIndexImgsJson",
+        success:function(res){
+          //console.log("==== res=",res);
+           that.setData({imgUrls:res.data.ret});
+        },
+        fail: function(err){  
+        console.log("index https请求失败了:",err);  
+      } 
+    });
   },
   onReady:function(){
     // 页面渲染完成
@@ -47,7 +59,7 @@ Page({
   onUnload:function(){
     // 页面关闭
   },
-  clickShowList: function(event){
+  clickShowInfo: function(event){
     //console.log(event);
     var dat = this.data.datas; 
     //var url = dat.ret[event.target.id].url.substring(16)
@@ -57,5 +69,16 @@ Page({
     console.log(id)
     wx.navigateTo({url:"../novelinfo/novelinfo?id="+id});
   },
+  clickImgShowinfo:function(event){
+    //console.log(event);
+    var dat = this.data.imgUrls; 
+    //var url = dat.ret[event.target.id].url.substring(16)
+    //var newRegExp = new RegExp("/", 'gm'); 
+    //var v1 = url.replace(newRegExp,"-")
+    var id = dat[event.target.id].id
+    console.log(id)
+    wx.navigateTo({url:"../novelinfo/novelinfo?id="+id});
+  },
+
 
 })

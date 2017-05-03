@@ -1,9 +1,4 @@
 <view  class="weui-article"  >
-
-
-    <view class = "title">
-          <text >{{datas.chpname}}\n\n</text>
-    </view>
     <view class="content_preandnext">
     <view class ="content_prechp" bindtap="clickPreChp">上一章        </view>
     <view class ="content_nextchp" bindtap="clickNextChp">下一章       </view>
