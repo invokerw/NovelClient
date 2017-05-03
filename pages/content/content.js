@@ -19,7 +19,7 @@ Page({
     wx.getStorage({
       key: 'loginsession',
       success: function(res) {
-        //console.log("loginsession=",res.data);
+        console.log("res:",res);
         that.setData({loginsession:res.data});
         console.log("loginsession=",that.data.loginsession);
         wx.request({
@@ -106,6 +106,9 @@ Page({
           console.log("==== res=",res);
             that.setData({content:res.data.content});
             that.setData({datas:res.data});
+            wx.setNavigationBarTitle({
+                   title: that.data.datas.chpname
+            })
         },
         fail:function(err){
           console.log("content https err = ",err);
@@ -130,6 +133,9 @@ Page({
           console.log("==== res=",res);
             that.setData({content:res.data.content});
             that.setData({datas:res.data});
+            wx.setNavigationBarTitle({
+                   title: that.data.datas.chpname
+            })
         },
         fail:function(err){
           console.log("content https err = ",err);

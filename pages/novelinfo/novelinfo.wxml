@@ -74,7 +74,7 @@
 </view>  
 </block>
 <view class="ceflex-wrp weui-cell" style="flex-direction:row;height:100rpx;">
-    <input class="input-flex-item" placeholder="我也要评论..." focus bindinput="inputString"/>
+    <input class="input-flex-item" placeholder="我也要评论..."  bindinput="inputString"/>
     
     <button class=" weui-btn_mini weui-btn_primary btn-flex-item" type="primary" size="default" loading="{{loadingComment}}" plain="false" bindtap="commentNovel">评论</button>
     </view>
