@@ -1,0 +1,15 @@
+
+<view class="page__category-content" style="padding:3%;"> 
+
+
+<view class="weui-cell"></view>
+<view class="section section_gap">
+  <text class="section__title">设定屏幕亮度:</text>
+  <view class="body-view">
+    <slider bindchange="sliderchange" value="{{light*100}}" min="0" max="100" show-value/>
+  </view>
+</view>
+<view class="weui-cell"></view>
+<text class="section__title">清除缓存</text>
+<button type="default" class="weui-btn weui-btn_default" bindtap="ClearS">清除缓存</button>
+</view>

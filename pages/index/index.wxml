@@ -8,7 +8,7 @@
     </swiper-item>
   </block>
 </swiper>
-<view class="title novel-desc-title">
+<view class="title novel-desc-title" style="padding-left:3%;">
   人气推荐：
 </view>
 <view  class="weui-cell ceflex-wrp" style="flex-direction:row;">
@@ -59,7 +59,7 @@
     </view>
 
 </view>
-<view class="title novel-desc-title">
+<view class="title novel-desc-title" style="padding-left:3%;">
   今日Top10：
 </view>
 <block wx:for="{{topten}}" wx:for-item="data" wx:key="{{data.index}}"> 

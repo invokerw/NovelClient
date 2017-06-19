@@ -8,7 +8,9 @@
     "pages/search/search",
     "pages/novelinfo/novelinfo",
     "pages/bookshelf/bookshelf",
-    "pages/topnovels/topnovels"
+    "pages/topnovels/topnovels",
+    "pages/readsetting/readsetting",
+    "pages/othersetting/othersetting"
   ],
   "window":{
     "backgroundTextStyle":"light",

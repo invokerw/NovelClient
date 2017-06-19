@@ -1,0 +1,6 @@
+/* pages/fontsetting/fontsetting.wxss */
+.flex-info-button{
+  width: 20%;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}

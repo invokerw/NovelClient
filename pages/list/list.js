@@ -1,7 +1,11 @@
 Page({
   data:{
     // text:"这是一个页面"
-    datas:""
+    datas:"",
+    scrollTop: 0,
+
+    uphide:true,
+    downhide:false,
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -69,5 +73,31 @@ Page({
     }
     data.ret = listNew;
     this.setData({datas:data});
+  },
+  PageUp:function(){
+    this.setData({
+      scrollTop: 0
+    })
+  },
+  PageDown:function(){
+    var that = this;
+    var length = that.data.datas.ret.length;
+    
+    this.setData({
+      scrollTop: length/22*1000
+    })
+  },
+  scroll: function (e, res) {
+    // 容器滚动时将此时的滚动距离赋值给 this.data.scrollTop
+    if (e.detail.scrollTop > 200) {
+      this.setData({
+        uphide: false
+      });
+    } else {
+      this.setData({
+        uphide: true
+      });
+    }
   }
+
 })

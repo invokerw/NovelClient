@@ -5,9 +5,6 @@
   overflow-x: hidden;
   }
 
-.page{
-    background-color: #ffcc99;
-}
 .flex-wrp{
   margin-top: 2rpx;
   display:flex;

@@ -1,7 +1,7 @@
 <!--pages/topnovels/topnovels.wxml-->
 
 <view class="weui-cells page__category-content">
-<text>{{showType}}</text>
+<text style="padding:3%;">{{showType}}</text>
 <block wx:for="{{datas.ret}}" wx:for-item="data" wx:key="{{data.index}}"> 
   <!--单个Item-->
   

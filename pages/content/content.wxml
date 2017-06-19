@@ -1,15 +1,24 @@
-<view  class="weui-article"  >
+<!--<scroll-view class="bigWrap" scroll-y="true" scroll-top="{{scrollTop}}"    scroll-with-animation="false"  style="position: absolute; left: 0; top:0; bottom: 0; right: 0;">-->
+<view  class="weui-article"  style="background-color:{{readset.backgroundcolor}};padding:3%;">
+  <!--<view class="content_preandnext" >
+    <view class ="content_prechp" style="font-size:{{readset.fontsize}}pt;" bindtap="clickPreChp">上一章        </view>
+    <view class ="content_nextchp" style="font-size:{{readset.fontsize}}pt;" bindtap="clickNextChp">下一章       </view>
+    </view>-->
+  <view >
+    <text style="font-size:{{readset.fontsize}}pt;">
+    {{content}}</text>
+    </view>
+<!--
     <view class="content_preandnext">
-    <view class ="content_prechp" bindtap="clickPreChp">上一章        </view>
-    <view class ="content_nextchp" bindtap="clickNextChp">下一章       </view>
+    <view class ="content_prechp" style="font-size:{{readset.fontsize}}pt;" bindtap="clickPreChp">上一章        </view>
+    <view class ="content_nextchp" style="font-size:{{readset.fontsize}}pt;" bindtap="clickNextChp">下一章       </view>
     </view>
-    <view >
-    <text >{{content}}</text>
-    </view>
+-->
 
-    <view class="content_preandnext">
-    <view class ="content_prechp" bindtap="clickPreChp">上一章        </view>
-    <view class ="content_nextchp" bindtap="clickNextChp">下一章       </view>
+    <view>
+    <image class="png-up" hidden="{{uphide}}" bindtap="clickPreChp" src="../assets/img/last.png"></image>
+    <image class="png-index" hidden="{{uphide}}" bindtap="clickIndex" src="../assets/img/index.png"></image>
+    <image class="png-down" hidden="{{downhide}}" bindtap="clickNextChp"  src="../assets/img/next.png"></image>
     </view>
-
 </view>
+<!--</scroll-view>-->

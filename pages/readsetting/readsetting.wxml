@@ -1,0 +1,38 @@
+<!--pages/fontsetting/fontsetting.wxml-->
+<view class="page__category-content" style="padding:3%;"> 
+
+<view style="padding-bottom:7rpx;"> 
+<text>当前设置:</text>
+<view >字体大小:{{readset.fontsize}}</view>
+<view >背景颜色:{{readset.backgroundcolor}}</view>
+</view> 
+
+<view class="weui-cell">
+<radio-group class="radio-group" bindchange="radioChange">
+ <label class="radio" wx:for-items="{{items}}">
+ <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+ </label>
+</radio-group>
+</view>
+
+<view class="weui-cell ceflex-wrp" style="flex-direction:row;">
+    <view class="flex-info-button">
+<button type="default" class="weui-btn weui-btn_mini weui-btn_default" bindtap="FontSizeSUB">Aa-</button>
+
+    </view>
+<view class="flex-info-button">
+<button type="default" class="weui-btn weui-btn_mini weui-btn_default" bindtap="FontSizeADD">Aa+</button>
+    </view>
+</view>
+
+<view class="weui-cell"></view>
+<button type="primary" class="weui-btn weui-btn_primary" bindtap="SaveSet">保存设置</button>
+
+示例：
+<view style="background-color:{{readset.backgroundcolor}};">
+    <text style="font-size:{{readset.fontsize}}pt;">
+    一场冷雨过后，冬天便施施然的来了。季节的更替，总是让人无端的生出一丝惆怅，流年的飞花，染指的情怀，谁又能握的住永远？只是依然感恩，那些流逝岁月里的点滴，带着细碎的美好的微光，都是生命旅途里独一的温暖。
+    </text>
+</view>
+
+</view>

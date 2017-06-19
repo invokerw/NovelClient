@@ -53,6 +53,7 @@ App({
           console.log('获取用户登录态失败！' + res.errMsg)
         }
       }})
+    this.getReadSet();
   },
   getUserInfo:function(cb){
     /*var that = this
@@ -73,8 +74,41 @@ App({
       })
     }*/
   },
+  getReadSet:function(){
+    var that = this;
+    wx.getStorage({
+      key: 'readsetfontsize',
+      success: function (res) {
+        console.log("readsetfontsize:",res.data)
+        wx.getStorage({
+          key: 'readsetbackgroundcolor',
+          success: function (res1) {
+            console.log("readsetbackgroundcolor:", res1.data)
+            var readset = {};
+            readset.fontsize = res.data;
+            readset.backgroundcolor = res1.data;
+            that.globalData.readset = readset;
+          }
+        })
+
+      },
+      fail:function(){
+        console.log("读取readset失败")
+        var readset = {};
+        readset.fontsize = 14;
+        readset.backgroundcolor = "#A9C8AD";
+        that.globalData.readset = readset;
+      }
+
+    })
+  },
   globalData:{
     userInfo:null,
-    listUrl:"https://fsnsaber.cn/GetFileList/listchou.jpg"
+    listUrl:"https://fsnsaber.cn/GetFileList/listchou.jpg",
+    readset:
+    {
+      fontsize:13,
+      backgroundcolor: "#A9C8AD",
+    },
   }
 })
