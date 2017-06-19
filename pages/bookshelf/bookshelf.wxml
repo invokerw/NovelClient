@@ -22,24 +22,26 @@
 </view>
 <!--书架-->
 <block wx:if="{{datas.code == 1}}">
-<block wx:for="{{datas.ret}}" wx:for-item="data" wx:key="{{data.index}}"> 
+<block wx:for="{{datas.ret}}" wx:for-item="data"  wx:key="{{data.index}}"> 
   <!--单个Item-->
   
-  <view id="{{index}}" bindtap="readThisNovel" class="weui-cell ceflex-wrp" style="flex-direction:row;">
-    <image class="flex-img" src="{{data.novel.imagesaddr}}" ></image>
-    <view class="flex-item" >
+  <view id="{{index}}" data-index="{{index}}"  bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE"  class="weui-cell ceflex-wrp item"  
+  style="flex-direction:row;{{showdel[index].txtStyle}}">
+   <image class="flex-img" id="{{index}}" bindtap="readThisNovel" src="{{data.novel.imagesaddr}}" ></image>
+    <view class="flex-item"  id="{{index}}" bindtap="readThisNovel">
         <view id="{{index}}" style="font-size:40rpx;" >{{data.novel.novelname}}</view>
         <view id="{{index}}"  >{{data.novel.author}}</view>
         <view id="{{index}}"  >{{data.novel.newchp}}</view>
-        {{data.novel.status}}
+        <view id="{{index}}"  >{{data.novel.status}}</view>
     </view>
-
-  
+ 
+    <view id="{{index}}" bindtap="delItem" class="remove" data-index="{{index}}" >删除</view>
   </view>
+
   </block>
 </block>
 <block wx:if="{{datas.code == 0}}">
-<text>书架上没有添加任何书籍</text>
+<text style="padding : 3%;">书架上没有添加任何书籍</text>
 </block>
 </view>
 
