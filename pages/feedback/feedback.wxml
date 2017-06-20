@@ -1,6 +1,6 @@
 <!--pages/feedback/feedback.wxml-->
 <view class="page" style="padding:3%">
-<text>问题反馈</text>
+
 
 <view class="weui-cells__title">选择</view>
 <view class="weui-cells weui-cells_after-title">
@@ -27,7 +27,17 @@ placeholder="请输入问题描述..." style="height: 3.3em" />
     </view>
     </view>
     </view>
-
+      <view class="weui-cells__title">联系方式</view>
+    <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+        <view class="weui-label">邮箱(选填)</view>
+    </view>
+    <view class="weui-cell__bd">
+        <input class="weui-input" maxlength="50" bindinput="mailinput" placeholder="请输入邮箱"/>
+    </view>
+    </view>
+    </view>
     <view class="weui-btn-area">
       <button formType="submit" class="weui-btn" bindtap="formSubmit" type="primary" >确定 
       </button>

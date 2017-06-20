@@ -12,6 +12,7 @@ Page({
     ],
     listIndex: 0,
     evaContent:'',
+    mailContent:'',
     maxLength:300,
     nowLength:0,
     loginsession:'',
@@ -24,7 +25,7 @@ Page({
     })
   },
   bindinput:function(e){
-    console.log(e);
+    //console.log(e);
     this.setData({
       nowLength: e.detail.value.length
     });
@@ -32,9 +33,13 @@ Page({
     this.setData({
       evaContent: e.detail.value
     });
-    if (e.detail.value.length > len) {
-      console.log('超出最大长度,', e.detail.value);
-    }
+
+  },
+  mailinput: function (e){
+    //console.log(e);
+    this.setData({
+      mailContent: e.detail.value
+    });
   },
   formSubmit: function () {
     var that = this;
@@ -60,20 +65,24 @@ Page({
     }
     //console.log("loginsession=", that.data.loginsession);
     wx.request({
-      url: "https://fsnsaber.cn/AddFeedbackJson",
+      url: "https://fsnsaber.cn/AddUserFeedbackJson",
       data: {
         session: that.data.loginsession,
         qtype: that.data.listIndex,
-        content: taht.data.evaContent
+        content: that.data.evaContent,
+        mail: that.data.mailContent,
       },
       success: function (res) {
         console.log("feedback ====> res=", res);
-        if(res.data.ret == 1){
+        if(res.data.code == 1){
           wx.showToast({
-            title: '成功',
+            title: '感谢您的反馈，我们会尽快处理',
             icon: 'success',
             duration: 2000
           })
+          that.setData({
+            evaContent:''
+          });
         }else{
           wx.showModal({
             title: '失败',
@@ -101,6 +110,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.setNavigationBarTitle({
+      title: "问题反馈"
+    })
     wx.getStorage({
       key: 'loginsession',
       success: function (res) {
