@@ -46,6 +46,11 @@ Page({
             },
             fail:function(err){
               console.log("content https err = ",err);
+              wx.showModal({
+                title: '书籍请求失败',
+                content: '网络问题，请重试',
+                showCancel: false,
+              })
             }
         });
       },
@@ -125,6 +130,11 @@ Page({
         },
         fail:function(err){
           console.log("content https err = ",err);
+          wx.showModal({
+            title: '书籍请求失败',
+            content: '网络问题，请重试',
+            showCancel: false,
+          })
         }
     });
   },
@@ -157,6 +167,11 @@ Page({
         },
         fail:function(err){
           console.log("content https err = ",err);
+          wx.showModal({
+            title: '书籍请求失败',
+            content: '网络问题，请重试',
+            showCancel: false,
+          })
         }
     });
   },

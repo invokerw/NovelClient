@@ -94,6 +94,11 @@ Page({
         },
         fail: function(err){  
         console.log("https请求失败了:",err);  
+        wx.showModal({
+          title: '榜单请求失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        })
       } 
     });
   },

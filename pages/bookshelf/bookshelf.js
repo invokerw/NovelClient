@@ -22,6 +22,10 @@ Page({
             page: 'othersetting',
             name: '其他设置'
           },
+          {
+            page: 'feedback',
+            name: '问题反馈' 
+          }
         ],
      
      }
@@ -71,6 +75,11 @@ Page({
           },
           fail: function (err) {
             console.log("bookshelf https请求失败了:", err);
+            wx.showModal({
+              title: '书架请求失败',
+              content: '网络问题，请重试',
+              showCancel: false,
+            })
           }
         });
       }
@@ -130,7 +139,7 @@ Page({
   },
   //手指刚放到屏幕触发
   touchS: function (e) {
-    console.log(e);
+    console.log("touchS" +e);
     //判断是否只有一个触摸点
     if (e.touches.length == 1) {
       // var showdel = this.data.showdel;
@@ -142,15 +151,23 @@ Page({
       // }
       this.setData({
         //记录触摸起始位置的X坐标
+        startID: e.target.id
+      });
+      this.setData({
+        //记录触摸起始位置的X坐标
         startX: e.touches[0].clientX
       });
     }
   },
   //触摸时触发，手指在屏幕上每移动一次，触发一次
   touchM: function (e) {
-    console.log("touchM:" + e);
+    console.log("touchM" + e);
     var that = this
     if (e.touches.length == 1) {
+      if (that.data.startID != e.target.id)
+      {
+        return;
+      }
       //记录触摸点位置的X坐标
       var moveX = e.touches[0].clientX;
       //计算手指起始点的X坐标与当前触摸点的X坐标的差值
@@ -182,6 +199,9 @@ Page({
     console.log("touchE" + e);
     var that = this
     if (e.changedTouches.length == 1) {
+      if (that.data.startID != e.target.id) {
+        return;
+      }
       //手指移动结束后触摸点位置的X坐标
       var endX = e.changedTouches[0].clientX;
       //触摸开始与结束，手指移动的距离
@@ -224,6 +244,11 @@ Page({
       },
       fail: function (err) {
         console.log("DeleteAUserNovelInBookShelfJson https请求失败了:", err);
+        wx.showModal({
+          title: '删除请求失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        })
       }
     });
   }

@@ -33,7 +33,12 @@ Page({
            console.log(arr);
         },
         fail: function(err){  
-        console.log("index https请求失败了:",err);  
+        console.log("index https请求失败了:",err); 
+        wx.showModal({
+          title: '列表请求失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        }) 
       } 
     });
    wx.request({

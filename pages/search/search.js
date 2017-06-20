@@ -53,7 +53,12 @@ Page({
            console.log("code = ",that.data.datas.code); 
         },
         fail: function(err){  
-        console.log("search https请求失败了:",err);  
+        console.log("search https请求失败了:",err); 
+        wx.showModal({
+          title: '搜索失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        }) 
       } 
     });
   },

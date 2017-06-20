@@ -36,7 +36,12 @@ onLoad:function(options){
           })
         },
         fail: function(err){  
-        console.log("index https请求失败了:",err);  
+        console.log("index https请求失败了:",err); 
+        wx.showModal({
+          title: '书籍信息请求失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        }) 
       } 
     });
 
@@ -62,6 +67,11 @@ onLoad:function(options){
         },
         fail: function(err){  
         console.log("GetTheNovelInBookShelfJson https请求失败了:",err);  
+        wx.showModal({
+          title: '请求失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        })
        }   
        });
         //评论请求
@@ -84,6 +94,11 @@ onLoad:function(options){
             },
             fail: function(err){  
             console.log("GetANovelCommentsJson https请求失败了:",err);  
+            wx.showModal({
+              title: '获取评论失败',
+              content: '网络问题，请重试',
+              showCancel: false,
+            })
             } 
          });
 
@@ -143,7 +158,12 @@ onLoad:function(options){
           }
         },
         fail: function(err){  
-        console.log("AddAUserNovelInBookShelfJson https请求失败了:",err);  
+        console.log("AddAUserNovelInBookShelfJson https请求失败了:",err);
+        wx.showModal({
+          title: '添加书架失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        })  
        } 
     });
     //} 
@@ -170,7 +190,12 @@ onLoad:function(options){
         }
       },
       fail: function(err){  
-      console.log("DeleteAUserNovelInBookShelfJson https请求失败了:",err);  
+      console.log("DeleteAUserNovelInBookShelfJson https请求失败了:",err);
+      wx.showModal({
+        title: '移出书架失败',
+        content: '网络问题，请重试',
+        showCancel: false,
+      })  
       } 
     });
   },
@@ -213,12 +238,22 @@ onLoad:function(options){
            that.setData({zanorcancel:zan});
         },
         fail: function(err){  
-        console.log("GetANovelCommentsJson https请求失败了:",err);  
+        console.log("GetANovelCommentsJson https请求失败了:",err); 
+        wx.showModal({
+          title: '获取评论失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        }) 
         } 
          });
         },
         fail: function(err){  
-        console.log("commentNovel https请求失败了:",err);  
+        console.log("commentNovel https请求失败了:",err); 
+        wx.showModal({
+          title: '评论书籍失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        }) 
       } 
     });
   },
@@ -250,6 +285,11 @@ onLoad:function(options){
         },
         fail: function(err){  
         console.log("zanComment https请求失败了:",err);  
+        wx.showModal({
+          title: '点赞失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        })
       } 
     });
   },
@@ -280,7 +320,12 @@ onLoad:function(options){
            that.setData({zanorcancel: zan}) ;   
         },
         fail: function(err){  
-        console.log("cacelZanComment https请求失败了:",err);  
+        console.log("cacelZanComment https请求失败了:",err); 
+        wx.showModal({
+          title: '取消赞失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        }) 
       } 
     });
   },
@@ -314,6 +359,11 @@ onLoad:function(options){
         },
         fail: function(err){  
         console.log("deleteComment https请求失败了:",err);  
+        wx.showModal({
+          title: '删除评论失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        })
       } 
     });
   },

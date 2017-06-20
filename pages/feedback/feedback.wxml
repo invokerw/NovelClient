@@ -1,0 +1,39 @@
+<!--pages/feedback/feedback.wxml-->
+<view class="page" style="padding:3%">
+<text>问题反馈</text>
+
+<view class="weui-cells__title">选择</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_select">
+    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+      <view class="weui-label">问题类型</view>
+    </view>
+    <view class="weui-cell__bd">
+    <picker bindchange="bindCountryChange" value="{{listIndex}}" range="{{qlist}}">
+      <view class="weui-select weui-select_in-select-after">
+      {{qlist[listIndex]}}
+      </view>
+    </picker>
+    </view>
+    </view>
+       
+      <view class="weui-cells__title">问题描述</view>
+    <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+    <view class="weui-cell__bd">
+         <textarea name="evaContent" bindinput="bindinput" maxlength="{{maxLength}}" value="{{evaContent}}" class="weui-textarea" 
+placeholder="请输入问题描述..." style="height: 3.3em" />
+         <view class="weui-textarea-counter">{{nowLength}}/{{maxLength}}</view>
+    </view>
+    </view>
+    </view>
+
+    <view class="weui-btn-area">
+      <button formType="submit" class="weui-btn" bindtap="formSubmit" type="primary" >确定 
+      </button>
+    </view>
+  
+
+</view>
+
+</view>

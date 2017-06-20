@@ -112,6 +112,7 @@
 .item .remove{  
     width: 60px;  
     height: 100%;  
+    color: #FFFFFF;
     background-color: red;  
     position: absolute;  
     top: 0;  

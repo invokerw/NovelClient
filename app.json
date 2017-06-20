@@ -10,7 +10,8 @@
     "pages/bookshelf/bookshelf",
     "pages/topnovels/topnovels",
     "pages/readsetting/readsetting",
-    "pages/othersetting/othersetting"
+    "pages/othersetting/othersetting",
+    "pages/feedback/feedback"
   ],
   "window":{
     "backgroundTextStyle":"light",

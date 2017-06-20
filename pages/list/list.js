@@ -30,7 +30,12 @@ Page({
            //console.log("chp=",chp);
         },
         fail: function(err){  
-        console.log("list https请求失败了:",err);  
+        console.log("list https请求失败了:",err); 
+        wx.showModal({
+          title: '章节目录请求失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        }) 
       } 
     });
     
