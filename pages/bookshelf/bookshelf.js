@@ -20,7 +20,7 @@ Page({
           },
           {
             page: 'othersetting',
-            name: '其他设置'
+            name: '其它设置'
           },
           {
             page: 'feedback',

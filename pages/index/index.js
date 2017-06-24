@@ -39,6 +39,37 @@ Page({
           content: '网络问题，请重试',
           showCancel: false,
         }) 
+      }
+      
+    });
+    wx.request({
+      url: "https://fsnsaber.cn/GetSystemNoticeJson",
+      success: function (res) {
+        console.log("==== res=", res);
+        if (res.data.code == 1) {
+          wx.showModal({
+            title: '公告',
+            content: res.data.ret,
+            showCancel: false,
+          })
+
+        } else if (res.data.code == -1) {
+          wx.showToast({
+            title: '获取公告失败',
+          })
+        } else if (res.data.code == 0) {
+          console.log("没有公告");
+        }
+        that.setData({ topten: arr });
+        console.log(arr);
+      },
+      fail: function (err) {
+        console.log("index https请求失败了:", err);
+        wx.showModal({
+          title: '列表请求失败',
+          content: '网络问题，请重试',
+          showCancel: false,
+        })
       } 
     });
    wx.request({
